@@ -83,3 +83,10 @@ deploy:
   type: git
   repo: git@github.com:supertpx/supertpx.github.io.git
   branch: master
+
+#search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
