@@ -53,10 +53,10 @@ mybatis应用程序通过SqlSessionFactoryBuilder从mybatis-config.xml配置文�
 1、加载mybatis全局配置文件（数据源、mapper映射文件等），解析配置文件，MyBatis基于XML配置文件生成Configuration，和一个个MappedStatement（包括了参数映射配置、动态SQL语句、结果映射配置），其对应着相应的CURD操作。
 2、SqlSessionFactoryBuilder通过Configuration对象生成SqlSessionFactory，用来开启SqlSession。
 3、SqlSession对象完成和数据库的交互：
-a、用户程序调用mybatis接口层api（即Mapper接口中的方法）
-b、SqlSession通过调用api的Statement ID找到对应的MappedStatement对象
-c、通过Executor（负责动态SQL的生成和查询缓存的维护）将MappedStatement对象进行解析，sql参数转化、动态sql拼接，生成jdbc Statement对象。
-d、JDBC执行sql。
+a、用户程序调用mybatis接口层api（即Mapper接口中的方法）；
+b、SqlSession通过调用api的Statement ID找到对应的MappedStatement对象；
+c、通过Executor（负责动态SQL的生成和查询缓存的维护）将MappedStatement对象进行解析，sql参数转化、动态sql拼接，生成jdbc Statement对象；
+d、JDBC执行sql；
 e、借助MappedStatement中的结果映射关系，将返回结果转化成HashMap、JavaBean等存储结构并返回。
 
 #### 参考文献
