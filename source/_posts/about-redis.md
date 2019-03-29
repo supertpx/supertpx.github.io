@@ -12,6 +12,8 @@ update: 2019/03/20
 
 其实，REDIS原理是一个很泛泛而谈的话题，我们只能从redis的工作模式，redis的优缺点等方面去分析。
 
+<!-- more -->
+
 首先，REDIS是一个key-value的存储系统，其中，key类型为非二进制安全的字符类型（not binary safe strings），value类型则有多种，如string、list、set、hash、sorted set。
 
 - string类型：string是redis最基本的类型，是二进制安全的，如果只用string，redis可以看作加上持久化功能的memcached；

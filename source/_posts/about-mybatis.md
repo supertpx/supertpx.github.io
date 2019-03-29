@@ -10,6 +10,8 @@ tags:
 
 {% asset_img mybatis工作流程.png mybatis工作流程 %}
 
+<!-- more -->
+
 由图中可以看出，mybatis最重要的两个配置之处：
 - mybatis-config.xml--mybatis全局配置相关
 
