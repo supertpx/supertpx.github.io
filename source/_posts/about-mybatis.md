@@ -1,7 +1,7 @@
 ---
 title: mybatis工作原理及相关
 date: 2019-03-25 11:54:46
-tags:
+categories: "框架"
 ---
 
 ### mybatis工作流程

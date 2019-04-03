@@ -2,6 +2,7 @@
 title: REDIS原理及其相关
 date: 2019/03/18
 update: 2019/03/20
+categories: "框架"
 ---
 
 #### 前言
