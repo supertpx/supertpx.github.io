@@ -4,7 +4,9 @@ date: 2019-03-25 11:54:46
 categories: "框架"
 ---
 
-### mybatis工作流程
+> mybatis的工作流程及关键配置
+
+#### mybatis工作流程
 
 先上一张图：
 
