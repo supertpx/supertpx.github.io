@@ -6,7 +6,7 @@ categories: "网络"
 
 >TCP/IP协议详解，两个重点：协议的层次，client和server之间的三握四挥
 
-#### TCP/IP协议模型
+### TCP/IP协议模型
 
 {% asset_img tcp模型.jpg TCP模型 %}
 
@@ -22,20 +22,22 @@ categories: "网络"
 三、处理路径、流控、拥塞等问题。
 - 网络接口层：这是TCP/IP软件的最低层，负责接收IP数据报并通过网络发送之，或者从网络上接收物理帧，抽出IP数据报，交给IP层。
 
-#### TCP三握四挥
+### TCP三握四挥
 
 TCP在建立固定连接时，client与server之前会有三次握手；而在释放连接时，两者之间又会有四次挥手。
 
-##### 三次握手
+位码即tcp标志位，有6种标示：SYN(synchronous建立联机)、ACK(acknowledgement 确认)、PSH(push传送)、FIN(finish结束)、RST(reset重置)、URG(urgent紧急)，还有两个数字位：Sequence number(顺序号码)、Acknowledge number(确认号码)。
+
+#### 三次握手
 
 {% asset_img tcp三次握手.png tcp三次握手 %}
 
 TCP三次握手过程如下：
 a.第一次握手：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。
-b.第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。
-c.第三次握手：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
+b.第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack number=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。
+c.第三次握手：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack number=K+1，并将该数据包发送给Server，Server检查ack number是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
 
-##### 四次挥手
+#### 四次挥手
 
 {% asset_img tcp四次挥手.png tcp四次挥手 %}
 

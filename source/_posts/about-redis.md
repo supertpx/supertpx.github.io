@@ -7,7 +7,7 @@ categories: "框架"
 
 >redis的工作原理以及redis各类默认策略
 
-#### REDIS基本类型
+### REDIS基本类型
 
 其实，REDIS原理是一个很泛泛而谈的话题，我们只能从redis的工作模式，redis的优缺点等方面去分析。
 
@@ -21,7 +21,7 @@ categories: "框架"
 - sorted set类型：string类型的有序不重复集合，与set不同的是每个元素都会关联一个double类型的score，sorted set由skip list和hash table混合实现，当添加一个元素时，该元素到score的映射被添加到hash table中，同时score到元素的映射被添加到skip list之中并按照score排序，实现有序；
 - hash类型：是一个string类型的field和value的映射表，可以用于存储对象，占用内存少。
 
-#### REDIS工作方式
+### REDIS工作方式
 
 redis通过将整个数据库加载到内存中运行，具有极其出色的性能，同时定期通过一定的持久化策略将数据持久化到硬盘中进行保存。redis支持多种数据类型，使其可以实现多种功能，如list可用于FIFO的双向链表，可用于轻量级的高性能消息队列，set可用于tag系统，用户喜好标记等。
 

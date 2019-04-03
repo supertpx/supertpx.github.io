@@ -6,7 +6,7 @@ categories: "框架"
 
 > mybatis的工作流程及关键配置
 
-#### mybatis工作流程
+### mybatis工作流程
 
 先上一张图：
 
@@ -52,7 +52,7 @@ categories: "框架"
 
 mybatis应用程序通过SqlSessionFactoryBuilder从mybatis-config.xml配置文件（也可以用Java文件配置的方式，需要添加@Configuration）中构建出SqlSessionFactory（SqlSessionFactory是线程安全的）；然后，SqlSessionFactory的实例直接开启一个SqlSession，再通过SqlSession实例获得Mapper对象并运行Mapper映射的SQL语句，完成对数据库的CRUD和事务提交，之后关闭SqlSession。
 
-#### 详细流程如下：
+### 详细流程如下：
 
 1、加载mybatis全局配置文件（数据源、mapper映射文件等），解析配置文件，MyBatis基于XML配置文件生成Configuration，和一个个MappedStatement（包括了参数映射配置、动态SQL语句、结果映射配置），其对应着相应的CURD操作。
 2、SqlSessionFactoryBuilder通过Configuration对象生成SqlSessionFactory，用来开启SqlSession。
@@ -63,6 +63,6 @@ c、通过Executor（负责动态SQL的生成和查询缓存的维护）将Mappe
 d、JDBC执行sql；
 e、借助MappedStatement中的结果映射关系，将返回结果转化成HashMap、JavaBean等存储结构并返回。
 
-#### 参考文献
+### 参考文献
 
 [《深入理解mybatis原理》 MyBatis的架构设计以及实例分析](https://blog.csdn.net/luanlouis/article/details/40422941)
