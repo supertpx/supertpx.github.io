@@ -16,7 +16,7 @@ categories: "框架"
 
 由图中可以看出，mybatis最重要的两个配置之处：
 - mybatis-config.xml--mybatis全局配置相关
-
+    {% codeblock mybatis-config.xml lang:xml %}
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
@@ -47,7 +47,7 @@ categories: "框架"
             </mappers>
 
         </configuration>
-
+    {% endcodeblock %}
 - xxxMapper.xml--mapper.xml映射文件。用于动态sql的生成和resultSet转化为对应的javaBean。
 
 mybatis应用程序通过SqlSessionFactoryBuilder从mybatis-config.xml配置文件（也可以用Java文件配置的方式，需要添加@Configuration）中构建出SqlSessionFactory（SqlSessionFactory是线程安全的）；然后，SqlSessionFactory的实例直接开启一个SqlSession，再通过SqlSession实例获得Mapper对象并运行Mapper映射的SQL语句，完成对数据库的CRUD和事务提交，之后关闭SqlSession。

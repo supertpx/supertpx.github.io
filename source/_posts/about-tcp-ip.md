@@ -15,7 +15,9 @@ categories: "网络"
 和传统的OSI网络模型的7个层次相比，TCP模型进行了进一步的封装，共有四个层次，由上至下依次如下：
 
 - 应用层：向用户提供一组常用的应用程序，比如电子邮件、文件传输访问、远程登录等。远程登录TELNET使用TELNET协议提供在网络其它主机上注册的接口。TELNET会话提供了基于字符的虚拟终端。文件传输访问FTP使用FTP协议来提供网络内机器间的文件拷贝功能。
-- 传输层：提供应用程序间的通信。其功能包括：一、格式化信息流；二、提供可靠传输。为实现后者，传输层协议规定接收端必须发回确认，并且假如分组丢失，必须重新发送。
+- 传输层：提供应用程序间的通信。其功能包括：
+一、格式化信息流；
+二、提供可靠传输。为实现后者，传输层协议规定接收端必须发回确认，并且假如分组丢失，必须重新发送。
 - 网络层：负责相邻计算机之间的通信。其功能包括三方面：
 一、处理来自传输层的分组发送请求，收到请求后，将分组装入IP数据报，填充报头，选择去往信宿机的路径，然后将数据报发往适当的网络接口。
 二、处理输入数据报：首先检查其合法性，然后进行寻径--假如该数据报已到达信宿机，则去掉报头，将剩下部分交给适当的传输协议；假如该数据报尚未到达信宿，则转发该数据报。
@@ -26,7 +28,11 @@ categories: "网络"
 
 TCP在建立固定连接时，client与server之前会有三次握手；而在释放连接时，两者之间又会有四次挥手。
 
-位码即tcp标志位，有6种标示：SYN(synchronous建立联机)、ACK(acknowledgement 确认)、PSH(push传送)、FIN(finish结束)、RST(reset重置)、URG(urgent紧急)，还有两个数字位：Sequence number(顺序号码)、Acknowledge number(确认号码)。
+TCP传送数据格式如图所示：
+
+{% asset_img TCP数据格式.png TCP数据格式 %}
+
+其中，我们需要关注的地方有，位码即tcp标志位，有6种标示：SYN(synchronous建立联机)、ACK(acknowledgement 确认)、PSH(push传送)、FIN(finish结束)、RST(reset重置)、URG(urgent紧急)，还有两个数字位：Sequence number(序号)、Acknowledge number(确认号)。
 
 #### 三次握手
 
@@ -35,7 +41,7 @@ TCP在建立固定连接时，client与server之前会有三次握手；而在�
 TCP三次握手过程如下：
 a.第一次握手：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。
 b.第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack number=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。
-c.第三次握手：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack number=K+1，并将该数据包发送给Server，Server检查ack number是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
+c.第三次握手：Client收到确认后，检查ack number是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack number=K+1，并将该数据包发送给Server，Server检查ack number是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
 
 #### 四次挥手
 
