@@ -23,7 +23,11 @@ categories: "框架"
 
 ### REDIS工作方式
 
-redis通过将整个数据库加载到内存中运行，具有极其出色的性能，同时定期通过一定的持久化策略将数据持久化到硬盘中进行保存。redis支持多种数据类型，使其可以实现多种功能，如list可用于FIFO的双向链表，可用于轻量级的高性能消息队列，set可用于tag系统，用户喜好标记等。
+redis通过将整个数据库加载到内存中运行，具有极其出色的性能，同时定期通过一定的持久化策略将数据持久化到硬盘中进行保存。redis支持多种数据类型，使其可以实现多种功能，如list可用于FIFO的双向链表，可用于轻量级的高性能消息队列，set可用于tag系统，用户喜好标记等。redis的优异性能主要有以下三个原因：
+
+- 纯内存操作
+- 单线程操作，避免了频繁的上下文切换
+- 采用了非阻塞I/O多路复用机制
 
 redis的主要缺点是因为其运行在内存中，受到物理内存容量大小的限制，不能用于海量数据的场景。
 
@@ -33,17 +37,31 @@ redis的持久化策略主要有两种，RDB模式和AOF模式，两者各有优
 
 - RDB模式是将内存中数据快照备份到.rdb格式的文件中（默认为dump.rdb）,其默认快照保存配置为：
     {% codeblock %}
-    save 900 1  #900秒内如果超过1个key被修改，则发起快照保存
-    save 300 10 #300秒内容如超过10个key被修改，则发起快照保存
+    save 900 1  #900秒内如果超过1个key被修改，则发起快照保存
+    save 300 10 #300秒内容如超过10个key被修改，则发起快照保存
     {% endcodeblock %}
     
 - AOF模式是将每个对数据库的写命令按执行顺序添加到appendonly.aof文件中。当redis重启时，通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。有如下三种方式：
     {% codeblock %}
-    appendonly yes                //启用aof持久化方式
-    appendfsync always      //每次收到写命令就立即强制写入磁盘，最慢的，但是保证完全的持久化，不推荐使用
-    appendfsync everysec      //每秒钟强制写入磁盘一次，在性能和持久化方面做了很好的折中，推荐
-    appendfsync no          //完全依赖os，性能最好,持久化没保证
+    appendonly yes          #启用aof持久化方式
+    appendfsync always      #每次收到写命令就立即强制写入磁盘，最慢的，但是保证完全的持久化，不推荐使用
+    appendfsync everysec    #每秒钟强制写入磁盘一次，在性能和持久化方面做了很好的折中，推荐
+    appendfsync no          #完全依赖os，性能最好,持久化没保证
     {% endcodeblock %}
 
+### redis的过期策略和内存淘汰机制
+
+- redis的过期策略一般是定期删除+惰性删除策略；
+
+- 内存淘汰机制：
+    {% codeblock %}
+    maxmemory-policy allkeys-lru  #noeviction，allkeys-lru，allkeys-random，volatile-lru，volatile-random，volatile-ttl等策略
+    {% endcodeblock %}
+
+### 采用redis等缓存系统需要面对的问题
+
+- redis和数据库的一致性问题。如果要求强一致性，只能不使用缓存；
+
+- 缓存穿透和缓存雪崩问题。对于缓存传统，可以采用互斥锁、异步更新、布隆过滤器等策略来避免；对于缓存雪崩，可以在过期时间上加上一个随机数，避免缓存大面积失效。
 
 
