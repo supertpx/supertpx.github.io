@@ -1,11 +1,10 @@
 ---
-title: about
+title: 关于我
 date: 2019-03-22 15:51:40
 ---
-##关于我
 
-努力学习的小菜鸟，欢迎分享交流。
+<center>努力学习的小菜鸟，欢迎分享交流。</center>
 
-From SuperTPX
+<center>From SuperTPX</center>
 
-Email：supertpx@163.com
+<center>Email：supertpx@163.com</center>
