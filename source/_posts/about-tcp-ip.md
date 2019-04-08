@@ -1,7 +1,8 @@
 ---
 title: 关于TCP/IP协议
 date: 2019-04-03 15:11:53
-categories: "网络"
+categories: 
+- 网络
 ---
 
 >TCP/IP协议详解，两个重点：协议的层次，client和server之间的三握四挥

@@ -2,7 +2,8 @@
 title: REDIS原理及其相关
 date: 2019/03/18
 update: 2019/03/20
-categories: "框架"
+categories: 
+- 框架
 ---
 
 >redis的工作原理以及redis各类默认策略
