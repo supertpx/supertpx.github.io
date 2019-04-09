@@ -11,7 +11,7 @@ categories:
 
 jvm内存模型图：
 
-{% asset_img jvm内存模型.png jvm内存模型 %}
+{% asset_img jvm内存模型.jpg jvm内存模型 %}
 
 <!-- more -->
 
