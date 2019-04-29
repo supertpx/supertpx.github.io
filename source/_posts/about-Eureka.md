@@ -183,3 +183,24 @@ eureka.client.serviceUrl.defaultZone=http://peer1:1002/eureka/
 
 #### 服务提供者
 
+在pom.xml中导入以下依赖：
+
+{% codeblock pom.xml lang:xml %}
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+{% endcodeblock %}
+
+并在应用主类中添加@EnableDiscoveryClient注解，即可开启一个Eureka Client。如果需要对端口等行为进行自定义，可以在application.properties中配置如下：
+
+{% codeblock application.properties lang:properties %}
+spring.application.name=eureka-client
+server.port=2001
+eureka.client.serviceUrl.defaultZone=http://peer:1001/eureka/,http://peer1:1002/eureka/
+#eureka.client.healthcheck.enabled=true
+#eureka.instance.statusPageUrlPath=http://localhost:1001/info
+#eureka.instance.healthCheckUrlPath=http://localhost:1001/health
+{% endcodeblock %}
+
+
