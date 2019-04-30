@@ -389,6 +389,43 @@ public class EcController {
 
 #### 服务消费者
 
+新建服务提供者的步骤也可用于新建服务消费者，不同的是，我们需要消费服务提供者提供的dc接口。在Spring Boot项目中定义一个interface用于访问dc接口，代码如下：
+
+{% codeblock Finterface.java lang:java %}
+package com.tpx.ms.restinterface;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@FeignClient("eureka-client")
+public interface Finterface {
+	@GetMapping("/dc")
+    String consumer();
+}
+{% endcodeblock %}
+
+然后再定义一个Controller用于调用该interface，代码如下:
+
+{% codeblock FController.java lang:java %}
+package com.tpx.ms.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FController {
+
+	@Autowired
+	com.tpx.ms.restinterface.Finterface Finterface;
+	
+	@GetMapping("/consumer")
+    public String dc() {
+        return Finterface.consumer();
+    }
+}
+{% endcodeblock %}
+
 经过以上对服务提供者的分析，可以得知，严格意义上的服务消费者，其实只需要开启服务获取的功能即可。在initScheduledTasks函数中，第一个服务获取的if分支中提供了一个cacheRefresh的定时任务，该任务会定时获取Eureka Server端的服务提供者列表，存储在本地并定期刷新。通过这个机制，我们可以实现客户端负载均衡。
 
 ### 其他
