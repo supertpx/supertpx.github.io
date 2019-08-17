@@ -100,22 +100,24 @@
   };
 </script>
 
-  <meta name="description" content="TCP/IP协议详解，两个重点：协议的层次，client和server之间的三握四挥  TCP/IP协议模型">
+  <meta name="description" content="Tree在现代操作系统内核、数据库工具以及各类编程语言提供的基础结构中有广泛的应用，本文将分析几种常见的树结构及其特点。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于TCP&#x2F;IP协议">
-<meta property="og:url" content="https://supertpx.github.io/about-tcp-ip/index.html">
+<meta property="og:title" content="关于B树、B+树、红黑树">
+<meta property="og:url" content="https://supertpx.github.io/about-trees/index.html">
 <meta property="og:site_name" content="October">
-<meta property="og:description" content="TCP/IP协议详解，两个重点：协议的层次，client和server之间的三握四挥  TCP/IP协议模型">
+<meta property="og:description" content="Tree在现代操作系统内核、数据库工具以及各类编程语言提供的基础结构中有广泛的应用，本文将分析几种常见的树结构及其特点。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://supertpx.github.io/about-tcp-ip/tcp模型.jpg">
-<meta property="og:image" content="https://supertpx.github.io/about-tcp-ip/TCP数据格式.png">
-<meta property="og:image" content="https://supertpx.github.io/about-tcp-ip/tcp三次握手.png">
-<meta property="og:image" content="https://supertpx.github.io/about-tcp-ip/tcp四次挥手.png">
-<meta property="og:updated_time" content="2019-07-30T03:37:55.430Z">
+<meta property="og:image" content="https://supertpx.github.io/about-trees/bst-tree.jpg">
+<meta property="og:image" content="https://supertpx.github.io/about-trees/rbt-tree.jpg">
+<meta property="og:image" content="https://supertpx.github.io/about-trees/trans.gif">
+<meta property="og:image" content="https://supertpx.github.io/about-trees/btree.JPG">
+<meta property="og:image" content="https://supertpx.github.io/about-trees/Bptree.JPG">
+<meta property="og:image" content="https://supertpx.github.io/about-trees/Bp.JPG">
+<meta property="og:updated_time" content="2019-08-17T09:32:40.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于TCP&#x2F;IP协议">
-<meta name="twitter:description" content="TCP/IP协议详解，两个重点：协议的层次，client和server之间的三握四挥  TCP/IP协议模型">
-<meta name="twitter:image" content="https://supertpx.github.io/about-tcp-ip/tcp模型.jpg">
+<meta name="twitter:title" content="关于B树、B+树、红黑树">
+<meta name="twitter:description" content="Tree在现代操作系统内核、数据库工具以及各类编程语言提供的基础结构中有广泛的应用，本文将分析几种常见的树结构及其特点。">
+<meta name="twitter:image" content="https://supertpx.github.io/about-trees/bst-tree.jpg">
 
 
 
@@ -123,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="https://supertpx.github.io/about-tcp-ip/">
+  <link rel="canonical" href="https://supertpx.github.io/about-trees/">
 
 
 
@@ -134,7 +136,7 @@
 </script>
 
   
-  <title>关于TCP/IP协议 | October</title>
+  <title>关于B树、B+树、红黑树 | October</title>
   
 
 
@@ -357,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://supertpx.github.io/about-tcp-ip/">
+    <link itemprop="mainEntityOfPage" href="https://supertpx.github.io/about-trees/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SuperTPX">
@@ -374,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于TCP/IP协议
+          <h1 class="post-title" itemprop="name headline">关于B树、B+树、红黑树
 
               
             
@@ -400,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-04-03 15:11:53" itemprop="dateCreated datePublished" datetime="2019-04-03T15:11:53+08:00">2019-04-03</time>
+              <time title="创建时间：2019-08-17 14:35:34" itemprop="dateCreated datePublished" datetime="2019-08-17T14:35:34+08:00">2019-08-17</time>
             </span>
           
 
@@ -415,7 +417,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
 
                 
                 
@@ -439,7 +441,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">2.2k</span>
+              <span title="本文字数">2.1k</span>
             </span>
           
 
@@ -471,33 +473,76 @@
 
       
         <blockquote>
-<p>TCP/IP协议详解，两个重点：协议的层次，client和server之间的三握四挥</p>
+<p>Tree在现代操作系统内核、数据库工具以及各类编程语言提供的基础结构中有广泛的应用，本文将分析几种常见的树结构及其特点。</p>
 </blockquote>
-<h3 id="TCP-IP协议模型"><a href="#TCP-IP协议模型" class="headerlink" title="TCP/IP协议模型"></a>TCP/IP协议模型</h3><img src="/about-tcp-ip/tcp模型.jpg" title="TCP模型">
-
 <a id="more"></a>
 
-<p>和传统的OSI网络模型的7个层次相比，TCP模型进行了进一步的封装，共有四个层次，由上至下依次如下：</p>
+<h3 id="二叉查找树（BST）"><a href="#二叉查找树（BST）" class="headerlink" title="二叉查找树（BST）"></a>二叉查找树（BST）</h3><p>二叉查找树又称有序二叉树，满足以下性质：</p>
 <ul>
-<li>应用层：向用户提供一组常用的应用程序，比如电子邮件、文件传输访问、远程登录等。远程登录TELNET使用TELNET协议提供在网络其它主机上注册的接口。TELNET会话提供了基于字符的虚拟终端。文件传输访问FTP使用FTP协议来提供网络内机器间的文件拷贝功能。</li>
-<li>传输层：提供应用程序间的通信。其功能包括：<br>一、格式化信息流；<br>二、提供可靠传输。为实现后者，传输层协议规定接收端必须发回确认，并且假如分组丢失，必须重新发送。</li>
-<li>网络层：负责相邻计算机之间的通信。其功能包括三方面：<br>一、处理来自传输层的分组发送请求，收到请求后，将分组装入IP数据报，填充报头，选择去往信宿机的路径，然后将数据报发往适当的网络接口。<br>二、处理输入数据报：首先检查其合法性，然后进行寻径–假如该数据报已到达信宿机，则去掉报头，将剩下部分交给适当的传输协议；假如该数据报尚未到达信宿，则转发该数据报。<br>三、处理路径、流控、拥塞等问题。</li>
-<li>网络接口层：这是TCP/IP软件的最低层，负责接收IP数据报并通过网络发送之，或者从网络上接收物理帧，抽出IP数据报，交给IP层。</li>
+<li>所有非叶子节点最多拥有两个子节点（left/right）</li>
+<li>若节点N的左子树不为空，则左子树的值均小于该节点的值；</li>
+<li>若节点N的右子树不为空，则右子树的值均大于该节点的值；</li>
+<li>任意节点的左右子树也分别是二叉查找树；</li>
+<li>任意节点的值不相等。</li>
 </ul>
-<h3 id="TCP三握四挥"><a href="#TCP三握四挥" class="headerlink" title="TCP三握四挥"></a>TCP三握四挥</h3><p>TCP在建立固定连接时，client与server之前会有三次握手；而在释放连接时，两者之间又会有四次挥手。</p>
-<p>TCP传送数据格式如图所示：</p>
-<img src="/about-tcp-ip/TCP数据格式.png" title="TCP数据格式">
+<p>二叉查找树的查找从根节点开始，如果值相等则命中，小于则查找左子树，大于则查找右子树。如果BST的结构对称，即左右子树的节点数差不多（平衡），该树的查找性能逼近二分查找。BST对比连续内存空间的二分查找，优点在于，BST的插入删除不需要挪动大段内存数据。但BST树在经过数次插入删除之后，结构可能会改变（非平衡），如下图所示：</p>
+<img src="/about-trees/bst-tree.jpg" title="BST结构">
 
-<p>其中，我们需要关注的地方有，位码即tcp标志位，有6种标示：SYN(synchronous建立联机)、ACK(acknowledgement 确认)、PSH(push传送)、FIN(finish结束)、RST(reset重置)、URG(urgent紧急)，还有两个数字位：Sequence number(序号)、Acknowledge number(确认号)。</p>
-<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><img src="/about-tcp-ip/tcp三次握手.png" title="tcp三次握手">
+<p>在这种情况下，二分查找树的查找性能会大幅下降，因此引出平衡二叉树（AVL）的概念。</p>
+<h3 id="平衡二叉查找树（AVL）"><a href="#平衡二叉查找树（AVL）" class="headerlink" title="平衡二叉查找树（AVL）"></a>平衡二叉查找树（AVL）</h3><p>平衡二叉树本质上是加了约束的二叉查找树，其在二叉查找树的定义上加了如下性质：</p>
+<ul>
+<li>左右子树的深度之差的绝对值不超过1；</li>
+<li>左右子树仍为平衡二叉树。</li>
+</ul>
+<p>左右子树深度之差即为该节点的平衡因子，绝对值小于1保证了结构上的对称。上图中b即为平衡二叉树。AVL树为了严格保证平衡性，在插入删除时，需要对子树进行一定次数的旋转，即保证了查询性能，却牺牲了插入删除的性能。在此基础上，弱平衡的概念（红黑树）被引入。</p>
+<h3 id="红黑树（RBT）"><a href="#红黑树（RBT）" class="headerlink" title="红黑树（RBT）"></a>红黑树（RBT）</h3><p>红黑树取消了平衡树（AVL）中用平衡因子的约束，转而使用红黑颜色来维持二叉树的平衡性（弱平衡）。红黑树满足以下约束：</p>
+<ul>
+<li>每个节点非黑即红；</li>
+<li>根节点一定是黑色；</li>
+<li>每个叶节点（NIL节点、空节点）一定是黑色；</li>
+<li>如果节点N为红色，则它的两个子节点一定是黑色；</li>
+<li>从任一节点到其每一叶节点所途径的黑色节点数目一定相同。</li>
+</ul>
+<p>最后一个约束是保证红黑树平衡的关键约束。这五点约束共同保证了红黑树的关键性质：从根节点到叶节点的最长路径不大于最短路径的两倍（弱平衡性）。红黑树上每一个节点包含5个关键字–color，key，left，right，p。若某一个关键字没有值，则为NIL。如下图所示：</p>
+<img src="/about-trees/rbt-tree.jpg" title="RBT结构">
 
-<p>TCP三次握手过程如下：<br>a.第一次握手：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。<br>b.第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack number=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。<br>c.第三次握手：Client收到确认后，检查ack number是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack number=K+1，并将该数据包发送给Server，Server检查ack number是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。</p>
-<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><img src="/about-tcp-ip/tcp四次挥手.png" title="tcp四次挥手">
+<p>红黑树应用广泛，比如JAVA中TreeMap的实现，JDK1.8以上HashMap的扩容等。</p>
+<h4 id="旋转操作"><a href="#旋转操作" class="headerlink" title="旋转操作"></a>旋转操作</h4><p>旋转分为左旋和右旋。对于红黑树而言，在我们实现某些操作中可能会出现红色右链接或则两个连续的红链接，这时候就要通过旋转修复。</p>
+<p>其过程如下图（右旋）所示：</p>
+<img src="/about-trees/trans.gif" title="右旋">
 
-<p>TCP四次挥手过程如下：<br>a.第一次挥手：Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。<br>b.第二次挥手：Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。<br>c.第三次挥手：Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。<br>d.第四次挥手：Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。</p>
-<h4 id="why三握四挥"><a href="#why三握四挥" class="headerlink" title="why三握四挥"></a>why三握四挥</h4><p>因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。</p>
-<h4 id="why-2MSL"><a href="#why-2MSL" class="headerlink" title="why 2MSL"></a>why 2MSL</h4><p>按道理，四个报文都发送完毕，我们可以直接进入CLOSE状态了，但是我们必须假象网络是不可靠的，有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。在Client发送出最后的ACK回复，但该ACK可能丢失。Server如果没有收到ACK，将不断重复发送FIN片段。所以Client不能立即关闭，它必须确认Server接收到了该ACK。Client会在发送出ACK之后进入到TIME_WAIT状态。Client会设置一个计时器，等待2MSL的时间。如果在该时间内再次收到FIN，那么Client会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。</p>
+<h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>二叉树中，对于每一个节点而言，其子节点最多只有两个，而当子节点数M &gt; 2时，就是B树。该结构是为磁盘存储而设计的数据结构，是一种平衡多路查找树。由上面的分析可以得知，若存储同样的节点，B树的深度最浅，AVL次之，红黑树最高，深度越浅，读取磁盘IO的次数就越少。</p>
+<p>B树满足以下约束：</p>
+<ul>
+<li>任意非叶子结点最多只有M个儿子（M&gt;2）；</li>
+<li>根结点的儿子数为[2, M]；</li>
+<li>除根结点以外的非叶子结点的儿子数为[M/2, M]；</li>
+<li>每个结点存放至少M/2-1（取上整）和至多M-1个关键字；（至少2个关键字）</li>
+<li>非叶子结点的关键字个数=指向儿子的指针个数-1；</li>
+<li>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且K[i] &lt; K[i+1]；</li>
+<li>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K[M-1]的子树，其它P[i]指向关键字属于(K[i-1], K[i])的子树；</li>
+<li>所有叶子结点位于同一层。</li>
+</ul>
+<p>一个M = 3的B树结构如下图所示：</p>
+<img src="/about-trees/btree.JPG" title="B树结构">
 
+<p>对B树进行检索时，会从根节点开始，对节点内的关键字进行二分查找，如未找到，则进入查找字所在范围对应的子节点进行查找，直至命中或者至叶子节点。由该过程可以看出，其检索性能等价于二分查找性能O（logN）。</p>
+<p>由于M/2的限制，在插入结点时，如果结点已满，需要将结点分裂为两个各占M/2的结点；删除结点时，需将两个不足M/2的兄弟结点合并。</p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p>B+树是由B树修改而来，与B树的不同点在于：</p>
+<ul>
+<li>非叶子结点的子树指针与关键字个数相同；</li>
+<li>非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1])的子树（B树是开区间，也就是说B树不允许关键字重复，B+树允许重复）；</li>
+<li>所有叶子节点增加一个链指针；</li>
+<li>所有关键字都在叶子节点出现(稠密索引，且链表中的关键字恰好是有序的)。</li>
+</ul>
+<p>对于B+树而言，非叶子节点相当于是叶子节点的索引(稀疏索引)，叶子节点相当于是存储(关键字)数据的数据层。这样的特性使得B+树更适合文件系统。B+树结构如下图所示：</p>
+<img src="/about-trees/Bptree.JPG" title="B+树结构">
+
+<p>B+树由于关键字只在叶子节点中储存，这样使得B+树的检索命中只会在叶子节点发生。</p>
+<h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B*树"></a>B*树</h3><p>B*树是在B+树的非根和非叶子结点再增加指向兄弟节点的指针。</p>
+<p>B*树定义了非叶子节点的关键字字数至少为M的2/3倍。</p>
+<p>B*树结构如下图所示：</p>
+<img src="/about-trees/Bp.JPG" title="B*树结构">
       
     </div>
 
@@ -555,8 +600,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/about-mybatis/" rel="next" title="mybatis工作原理及相关">
-                <i class="fa fa-chevron-left"></i> mybatis工作原理及相关
+              <a href="/ac-1/" rel="next" title="字符在字符串中出现的频率统计">
+                <i class="fa fa-chevron-left"></i> 字符在字符串中出现的频率统计
               </a>
             
           </div>
@@ -564,10 +609,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/about-sql-connection-pool/" rel="prev" title="数据库连接池的一些理解">
-                数据库连接池的一些理解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -719,7 +760,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP协议模型"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP协议模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP三握四挥"><span class="nav-number">2.</span> <span class="nav-text">TCP三握四挥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手"><span class="nav-number">2.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四次挥手"><span class="nav-number">2.2.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why三握四挥"><span class="nav-number">2.3.</span> <span class="nav-text">why三握四挥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-2MSL"><span class="nav-number">2.4.</span> <span class="nav-text">why 2MSL</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉查找树（BST）"><span class="nav-number">1.</span> <span class="nav-text">二叉查找树（BST）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡二叉查找树（AVL）"><span class="nav-number">2.</span> <span class="nav-text">平衡二叉查找树（AVL）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树（RBT）"><span class="nav-number">3.</span> <span class="nav-text">红黑树（RBT）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转操作"><span class="nav-number">3.1.</span> <span class="nav-text">旋转操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B树"><span class="nav-number">4.</span> <span class="nav-text">B树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-树"><span class="nav-number">5.</span> <span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-树-1"><span class="nav-number">6.</span> <span class="nav-text">B*树</span></a></li></ol></div>
             
 
           </div>
